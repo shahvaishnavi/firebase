@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "486840431591",
+    "project_id": "shah-ac37d",
+    "storage_bucket": "shah-ac37d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:486840431591:android:c5dfbc0bfadffb10704342",
+        "android_client_info": {
+          "package_name": "com.example.firebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "486840431591-pvfu7611id05qo8563dk95kl52bisfo4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDV-yEXJJ1WBuhHCzvnwIod8REWzvBD-vo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "486840431591-pvfu7611id05qo8563dk95kl52bisfo4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
