@@ -1,5 +1,7 @@
 import 'package:firebase/registerpage.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -38,7 +40,32 @@ class _frbaseState extends State<frbase> {
             ),
           ),
           ElevatedButton(
-              onPressed: () {
+              onPressed: () async {
+                try {
+                  final credential = await FirebaseAuth.instance
+                      .createUserWithEmailAndPassword(
+                    email: email.text,
+                    password: password.text,
+                  );
+                } on FirebaseAuthException catch (e) {
+                  if (e.code == 'weak-password') {
+                    print('The password provided is too weak.');
+                  } else if (e.code == 'email-already-in-use') {
+                    print('The account already exists for that email.');
+                  }
+                } catch (e) {
+                  print(e);
+                }
+
+                Fluttertoast.showToast(
+                    msg: "login",
+                    toastLength: Toast.LENGTH_SHORT,
+                    gravity: ToastGravity.CENTER,
+                    timeInSecForIosWeb: 1,
+                    backgroundColor: Colors.red,
+                    textColor: Colors.white,
+                    fontSize: 16.0);
+
                 Navigator.pushReplacement(context, MaterialPageRoute(
                   builder: (context) {
                     return registerpage();
