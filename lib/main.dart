@@ -1,3 +1,4 @@
+import 'package:firebase/registerpage.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -36,6 +37,18 @@ class _frbaseState extends State<frbase> {
                   labelText: "ENTER UR PASSWORD", hintText: "ENTER PASSWORD"),
             ),
           ),
+          ElevatedButton(
+              onPressed: () {
+                Navigator.pushReplacement(context, MaterialPageRoute(
+                  builder: (context) {
+                    return registerpage();
+                  },
+                ));
+              },
+              child: Center(
+                  child: Text(
+                "REGISTER",
+              )))
         ],
       ),
     );
