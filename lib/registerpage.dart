@@ -12,7 +12,7 @@ class _registerpageState extends State<registerpage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("RESGISTER"),
+        title: Text("REGISTER"),
       ),
       body: Column(
         children: [
