@@ -88,7 +88,11 @@ class _frbaseState extends State<frbase> {
                 icon: Icon(Icons.login),
                 label: Text("LOGIN")),
             ElevatedButton.icon(
-                onPressed: () {},
+                onPressed: () {
+                  signInWithGoogle().then((value) {
+                    print(value);
+                  });
+                },
                 icon: Icon(Icons.phonelink_lock),
                 label: Text("link with google"))
           ],
@@ -100,23 +104,21 @@ class _frbaseState extends State<frbase> {
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
 
-  void google() {
-    Future<UserCredential> signInWithGoogle() async {
-      // Trigger the authentication flow
-      final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+  Future<UserCredential> signInWithGoogle() async {
+    // Trigger the authentication flow
+    final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
 
-      // Obtain the auth details from the request
-      final GoogleSignInAuthentication? googleAuth =
-          await googleUser?.authentication;
+    // Obtain the auth details from the request
+    final GoogleSignInAuthentication? googleAuth =
+        await googleUser?.authentication;
 
-      // Create a new credential
-      final credential = GoogleAuthProvider.credential(
-        accessToken: googleAuth?.accessToken,
-        idToken: googleAuth?.idToken,
-      );
+    // Create a new credential
+    final credential = GoogleAuthProvider.credential(
+      accessToken: googleAuth?.accessToken,
+      idToken: googleAuth?.idToken,
+    );
 
-      // Once signed in, return the UserCredential
-      return await FirebaseAuth.instance.signInWithCredential(credential);
-    }
+    // Once signed in, return the UserCredential
+    return await FirebaseAuth.instance.signInWithCredential(credential);
   }
 }
