@@ -37,6 +37,9 @@ dependencies:
   firebase_auth:
   fluttertoast:
   google_sign_in:
+  image_picker:
+  firebase_storage:
+  firebase_database:
 
 dev_dependencies:
   flutter_test:
