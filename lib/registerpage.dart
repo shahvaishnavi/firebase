@@ -36,6 +36,8 @@ class _registerpageState extends State<registerpage> {
               ),
             ),
           ),
+          ElevatedButton.icon(
+              onPressed: () {}, icon: Icon(Icons.phone), label: Text("number"))
         ],
       ),
     );

@@ -31,6 +31,24 @@ class _storagepageState extends State<storagepage> {
               child: CircleAvatar(backgroundImage: FileImage(File(myimage))),
             ),
           ),
+          Container(
+            child: TextField(
+              controller: name,
+              decoration: InputDecoration(labelText: "ENTER UR NAME"),
+            ),
+          ),
+          Container(
+            child: TextField(
+              controller: age,
+              decoration: InputDecoration(labelText: "ENTER UR AGE"),
+            ),
+          ),
+          Container(
+            child: TextField(
+              controller: dob,
+              decoration: InputDecoration(labelText: "ENTER UR DOB"),
+            ),
+          ),
           ElevatedButton(
               onPressed: () async {
                 final storageRef = FirebaseStorage.instance.ref();
@@ -61,6 +79,10 @@ class _storagepageState extends State<storagepage> {
       ),
     );
   }
+
+  TextEditingController name = TextEditingController();
+  TextEditingController age = TextEditingController();
+  TextEditingController dob = TextEditingController();
 
   String myimage = "";
 }
