@@ -1,4 +1,5 @@
 import 'package:firebase/registerpage.dart';
+import 'package:firebase/storagepage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -94,7 +95,16 @@ class _frbaseState extends State<frbase> {
                   });
                 },
                 icon: Icon(Icons.phonelink_lock),
-                label: Text("link with google"))
+                label: Text("link with google")),
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.pushReplacement(context, MaterialPageRoute(
+                    builder: (context) {
+                      return storagepage();
+                    },
+                  ));
+                },
+                child: Center(child: Text("img")))
           ],
         ),
       ),
