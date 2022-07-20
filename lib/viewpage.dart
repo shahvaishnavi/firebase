@@ -35,5 +35,7 @@ class _viewpageState extends State<viewpage> {
       print("===v==${value}");
       vv.add(value);
     });
+    print("====id==${vv[0]}");
+    print("====msg==${de.snapshot.value}");
   }
 }
