@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class registerpage extends StatefulWidget {
@@ -37,12 +38,39 @@ class _registerpageState extends State<registerpage> {
             ),
           ),
           ElevatedButton.icon(
-              onPressed: () {}, icon: Icon(Icons.phone), label: Text("number"))
+              onPressed: () async {
+                await FirebaseAuth.instance.verifyPhoneNumber(
+                  phoneNumber: '+91${number.text}',
+                  verificationCompleted: (PhoneAuthCredential credential) {},
+                  verificationFailed: (FirebaseAuthException e) {},
+                  codeSent: (String verificationId, int? resendToken) {
+                    setState(() {
+                      varid = verificationId;
+                    });
+                  },
+                  codeAutoRetrievalTimeout: (String verificationId) {},
+                );
+              },
+              icon: Icon(Icons.phone),
+              label: Text("number")),
+          ElevatedButton.icon(
+              onPressed: () async {
+                FirebaseAuth auth = FirebaseAuth.instance;
+                String smsCode = '${OTP.text}';
+                PhoneAuthCredential credential = PhoneAuthProvider.credential(
+                    verificationId: varid, smsCode: smsCode);
+
+                // Sign the user in (or link) with the credential
+                await auth.signInWithCredential(credential);
+              },
+              icon: Icon(Icons.message_outlined),
+              label: Text("otp")),
         ],
       ),
     );
   }
 
+  String varid = "";
   TextEditingController number = TextEditingController();
   TextEditingController OTP = TextEditingController();
 }
