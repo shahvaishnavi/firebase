@@ -41,7 +41,7 @@ dependencies:
   firebase_storage:
   firebase_database:
   otp_text_field:
-    
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
