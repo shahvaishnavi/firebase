@@ -21,14 +21,16 @@ class _viewpageState extends State<viewpage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      body: Container(),
+    );
   }
 
   Future<void> dataevent() async {
     DatabaseReference ref = FirebaseDatabase.instance.ref("CREATIVE");
     DatabaseEvent de = await ref.once();
     Map map = de.snapshot.value as Map;
-    Map().forEach((key, value) {
+    map.forEach((key, value) {
       print("===k==${key}");
       print("===v==${value}");
       vv.add(value);
