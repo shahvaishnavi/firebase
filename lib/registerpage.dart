@@ -1,5 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:otp_text_field/otp_field.dart';
+import 'package:otp_text_field/style.dart';
 
 class registerpage extends StatefulWidget {
   const registerpage({Key? key}) : super(key: key);
@@ -62,6 +64,18 @@ class _registerpageState extends State<registerpage> {
 
                 // Sign the user in (or link) with the credential
                 await auth.signInWithCredential(credential);
+
+                OTPTextField(
+                  length: 5,
+                  width: MediaQuery.of(context).size.width,
+                  fieldWidth: 80,
+                  style: TextStyle(fontSize: 17),
+                  textFieldAlignment: MainAxisAlignment.spaceAround,
+                  fieldStyle: FieldStyle.underline,
+                  onCompleted: (pin) {
+                    print("Completed: " + pin);
+                  },
+                );
               },
               icon: Icon(Icons.message_outlined),
               label: Text("otp")),

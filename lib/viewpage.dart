@@ -27,7 +27,7 @@ class _viewpageState extends State<viewpage> {
   Future<void> dataevent() async {
     DatabaseReference ref = FirebaseDatabase.instance.ref("CREATIVE");
     DatabaseEvent de = await ref.once();
-
+    Map map = de.snapshot.value as Map;
     Map().forEach((key, value) {
       print("===k==${key}");
       print("===v==${value}");
