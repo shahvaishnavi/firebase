@@ -43,6 +43,7 @@ dependencies:
   otp_text_field:
   firebase_messaging:
   flutter_local_notifications:
+  firebase_core:
 
 dev_dependencies:
   flutter_test:
