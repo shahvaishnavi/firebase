@@ -12,6 +12,8 @@ class viewpage extends StatefulWidget {
 
 class _viewpageState extends State<viewpage> {
   List vv = [];
+  Key? snapshot;
+
   @override
   void initState() {
     // TODO: implement initState
@@ -22,8 +24,38 @@ class _viewpageState extends State<viewpage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(),
+      body: ListView.builder(
+        itemBuilder: (context, index) {
+          return ListTile(
+            title: Text("${vv[index]}"),
+            trailing: PopupMenuButton(
+              itemBuilder: (context) {
+                return [
+                  PopupMenuItem(
+                    child: Text("delete"),
+                    onTap: () async {
+                      Stream<DatabaseEvent> ref = await FirebaseDatabase
+                          .instance
+                          .ref("CREATIVE")
+                          .onChildRemoved;
+                    },
+                  )
+                ];
+              },
+            ),
+          );
+        },
+      ),
     );
+
+    //   PopupMenuItem(
+    //     child: Text("delete"),
+    //     onTap: () async {
+    //       Stream<DatabaseEvent> ref =
+    //       await FirebaseDatabase.instance.ref("CREATIVE").onChildRemoved;
+    //     },
+    //   )
+    // ];);
   }
 
   Future<void> dataevent() async {

@@ -41,6 +41,8 @@ dependencies:
   firebase_storage:
   firebase_database:
   otp_text_field:
+  firebase_messaging:
+  flutter_local_notifications:
 
 dev_dependencies:
   flutter_test:
